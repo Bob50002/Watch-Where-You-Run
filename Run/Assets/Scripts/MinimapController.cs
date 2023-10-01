@@ -7,24 +7,36 @@ public class MinimapController : MonoBehaviour
 {
     [SerializeField] RawImage Minimap;
 
-    private float miniMapOriginalPosition;
+    private Vector3 miniMapOriginalPosition;
 
     [SerializeField] Transform MinimapNewPosition;
 
     [SerializeField] float MoveSpeed;
+
+    private bool MinimapEnable;
     void Start()
     {
-        
+        MinimapEnable = false;
+
+        miniMapOriginalPosition = Minimap.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float MoveToward = MoveSpeed * Time.deltaTime;
-
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            Minimap.transform.position = Vector3.MoveTowards(Minimap.transform.position, MinimapNewPosition.position, MoveToward);
+            MinimapEnable = !MinimapEnable;
+        }
+
+        if (MinimapEnable == true)
+        {
+            Minimap.transform.position = Vector3.MoveTowards(Minimap.transform.position, MinimapNewPosition.position, MoveSpeed);
+        }
+
+        if (MinimapEnable == false)
+        {
+            Minimap.transform.position = Vector3.MoveTowards(Minimap.transform.position, miniMapOriginalPosition, MoveSpeed);
         }
     }
 }

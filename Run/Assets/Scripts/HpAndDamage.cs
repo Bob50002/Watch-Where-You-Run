@@ -10,12 +10,14 @@ public class HpAndDamage : MonoBehaviour
     [SerializeField] TextMeshProUGUI HealthDisplay;
 
     [SerializeField] Image RedScreen;
+
+    private Vector3 respawnPosition;
+
     void Start()
     {
-
+        respawnPosition = this.transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
         HealthDisplay.text = "HP: " + Health.ToString();
@@ -33,7 +35,16 @@ public class HpAndDamage : MonoBehaviour
 
             RedScreen.color = Alpha;
 
+            StartCoroutine("Respawn");
+
             Destroy(other.gameObject);    
         }
+    }
+
+    IEnumerator Respawn()
+    {
+        this.gameObject.transform.position = respawnPosition;
+
+        yield return new WaitForSeconds(1f);
     }
 }
