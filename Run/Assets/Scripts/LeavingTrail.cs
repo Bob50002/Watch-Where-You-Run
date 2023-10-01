@@ -6,15 +6,17 @@ public class LeavingTrail : MonoBehaviour
 {
     [SerializeField] List<GameObject> ProjectilesPool = new List<GameObject>();
 
-    private bool ProjectileReady;
-
     [SerializeField] float OriginalCountdownValue;
+
+    private float PlayerX;
+
+    private float PlayerY;
+
+    private float PlayerZ;
 
     private float Countdown;
     void Start()
     {
-        ProjectileReady = false;
-
         Countdown = OriginalCountdownValue;
     }
 
@@ -24,19 +26,23 @@ public class LeavingTrail : MonoBehaviour
        StartCoroutine("ReleaseProjectile");
 
         Countdown = Mathf.MoveTowards(Countdown, 0, 0.5f * Time.deltaTime);
-
-
     }
 
     IEnumerator ReleaseProjectile()
     {
         if (Countdown == 0)
         {
-            Instantiate(ProjectilesPool[0], new Vector3(this.transform.position.x, 2, this.transform.position.z), Quaternion.identity);
+          PlayerX = this.transform.position.x;
 
-            Countdown = OriginalCountdownValue;
+          PlayerY = this.transform.position.y;
+
+          PlayerZ = this.transform.position.z;
+
+          Countdown = OriginalCountdownValue;
+
+          yield return new WaitForSeconds(0.3f);
+
+          Instantiate(ProjectilesPool[0], new Vector3(PlayerX , PlayerY, PlayerZ), Quaternion.identity);      
         }
-
-        return null;
     }
 }

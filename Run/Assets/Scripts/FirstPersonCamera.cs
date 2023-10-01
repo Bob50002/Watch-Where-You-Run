@@ -27,7 +27,7 @@ public class FirstPersonCamera : MonoBehaviour
 
         CameraVerticalMove -= InputY;
 
-        CameraVerticalMove = Mathf.Clamp(CameraVerticalMove, -90f, 90f);
+        CameraVerticalMove = Mathf.Clamp(CameraVerticalMove, -30f, 30f);
 
         transform.localEulerAngles = Vector3.right * CameraVerticalMove;
 
