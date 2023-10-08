@@ -10,6 +10,8 @@ public class FirstPersonCamera : MonoBehaviour
 
     [SerializeField] float CameraVerticalMove;
 
+    [SerializeField] float CameraLimit;
+
     private bool LockCamera;
     void Start()
     {
@@ -27,7 +29,7 @@ public class FirstPersonCamera : MonoBehaviour
 
         CameraVerticalMove -= InputY;
 
-        CameraVerticalMove = Mathf.Clamp(CameraVerticalMove, -30f, 30f);
+        CameraVerticalMove = Mathf.Clamp(CameraVerticalMove, -CameraLimit, CameraLimit);
 
         transform.localEulerAngles = Vector3.right * CameraVerticalMove;
 
