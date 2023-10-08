@@ -29,18 +29,6 @@ public class RunEndlessly : MonoBehaviour
 
         Input.GetAxisRaw("Vertical");
 
-        //transform.rotation = Quaternion.Euler(90, 90, 0);
-
         MainCharacter.transform.position += transform.forward * MoveSpeed * Time.deltaTime;
-
-        //if (Input.GetAxisRaw("Vertical") == -1)
-        //{
-        //    MainCharacter.transform.position += -transform.forward * MoveSpeed * Time.deltaTime;
-        //}
-
-        //if (Input.GetAxisRaw("Vertical") == 1)
-        //{
-        //    MainCharacter.transform.position += transform.forward * MoveSpeed * Time.deltaTime;
-        //}
     }
 }

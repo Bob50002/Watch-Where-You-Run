@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class Gameover : MonoBehaviour
 {
-    [SerializeField] HpAndDamage Hp;
-    void Start()
-    {
-        
-    }
+    [SerializeField] HpAndDamage HP;
 
-    // Update is called once per frame
     void Update()
     {
-        if (Hp.Health <= 0)
+        if (HP.GetHealth() <= 0)
         {
             Time.timeScale = 0;
         }

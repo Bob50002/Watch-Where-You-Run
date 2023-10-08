@@ -7,7 +7,7 @@ public class MinimapController : MonoBehaviour
 {
     [SerializeField] RawImage Minimap;
 
-    private Vector3 miniMapOriginalPosition;
+    private Vector3 MiniMapOriginalPosition;
 
     [SerializeField] Transform MinimapNewPosition;
 
@@ -18,7 +18,7 @@ public class MinimapController : MonoBehaviour
     {
         MinimapEnable = false;
 
-        miniMapOriginalPosition = Minimap.transform.position;
+        MiniMapOriginalPosition = Minimap.transform.position;
     }
 
     // Update is called once per frame
@@ -36,7 +36,7 @@ public class MinimapController : MonoBehaviour
 
         if (MinimapEnable == false)
         {
-            Minimap.transform.position = Vector3.MoveTowards(Minimap.transform.position, miniMapOriginalPosition, MoveSpeed);
+            Minimap.transform.position = Vector3.MoveTowards(Minimap.transform.position, MiniMapOriginalPosition, MoveSpeed);
         }
     }
 }

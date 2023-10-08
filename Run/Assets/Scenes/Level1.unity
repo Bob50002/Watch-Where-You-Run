@@ -542,9 +542,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 411013182d0f46541869e9a21e2e91a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OriginalCountdownValue: 1
   ProjectilesPool:
   - {fileID: 2930459213385943573, guid: 755b7ebcf5b59d14099d11957a4f63b1, type: 3}
-  OriginalCountdownValue: 1
 --- !u!114 &294306077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,6 +558,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 3
+  ProjectileList:
+  - Projectile
   HealthDisplay: {fileID: 457304446}
   RedScreen: {fileID: 2005324263}
 --- !u!1 &344476074
@@ -777,7 +779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a28b2e51aac3e45a78bb1a0be580ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: {fileID: 294306077}
+  HP: {fileID: 294306077}
 --- !u!4 &606368841
 Transform:
   m_ObjectHideFlags: 0
@@ -1879,7 +1881,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085156180}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 

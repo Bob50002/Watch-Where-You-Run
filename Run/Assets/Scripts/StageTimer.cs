@@ -9,7 +9,7 @@ public class StageTimer : MonoBehaviour
 {
     [SerializeField] float LevelTimer;
 
-    private float timeDecay = 1;
+    private float TimeDecay = 1;
 
     [SerializeField] Animator TransitionController;
 
@@ -23,7 +23,7 @@ public class StageTimer : MonoBehaviour
     
     void Update()
     {
-        LevelTimer = Mathf.MoveTowards(LevelTimer, 0, timeDecay * Time.deltaTime);
+        LevelTimer = Mathf.MoveTowards(LevelTimer, 0, TimeDecay * Time.deltaTime);
 
         Countdown.text = LevelTimer.ToString("N0");
 
@@ -31,7 +31,7 @@ public class StageTimer : MonoBehaviour
         {
             Debug.Log("You win");
 
-            StartCoroutine("LoadLevel");
+            StartCoroutine(LoadLevel());
         }
     }
 
