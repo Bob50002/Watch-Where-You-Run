@@ -15,32 +15,28 @@ public class HpAndDamage : MonoBehaviour
 
     private Vector3 RespawnPosition;
 
-    public int _PlayerHealth
+    public int _Health
     {
-        get
-        {
-            return Health;
-        }
-        set
+        get { return Health; }
+
+        private set
         {
             Health = value;
         }
     }
 
-    public int GetHealth()
-    {
-        return this._PlayerHealth;
-    }
 
 
     void Start()
     {
         RespawnPosition = this.transform.position;
+
+        _Health = Health;
     }
 
     void Update()
     {
-        HealthDisplay.text = "HP: " + GetHealth().ToString();
+        HealthDisplay.text = "HP: " + Health.ToString();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -59,7 +55,11 @@ public class HpAndDamage : MonoBehaviour
 
                 //StartCoroutine(Respawn());
 
-                Destroy(other.gameObject);    
+                Destroy(other.gameObject);
+
+
+
+                //RedScreen.color = Alpha;
             }
         }
      
