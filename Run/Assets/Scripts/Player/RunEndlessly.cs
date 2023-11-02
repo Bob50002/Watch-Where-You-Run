@@ -18,7 +18,7 @@ public class RunEndlessly : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Movement();
     }
