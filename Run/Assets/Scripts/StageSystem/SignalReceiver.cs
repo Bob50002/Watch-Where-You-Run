@@ -65,7 +65,7 @@ public class SignalReceiver : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         if (LinkedComponent != null)
         {
@@ -78,5 +78,4 @@ public class SignalReceiver : MonoBehaviour
 
         }
     }
-
 }
