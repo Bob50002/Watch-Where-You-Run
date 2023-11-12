@@ -10,12 +10,16 @@ public class Com_ToggleCollision : MonoBehaviour, IInteractable
 
     [SerializeField] float Transparency;
 
-
+    private bool IsPhasing;
     void Start()
     {
+        IsPhasing = false;
+
         ObjectCollider = GetComponent<Collider>();
 
         ObjectColor = GetComponent<MeshRenderer>();
+
+        Transparency = ObjectColor.material.color.a;
     }
 
     public void DoSomething(bool Activate)
@@ -24,15 +28,41 @@ public class Com_ToggleCollision : MonoBehaviour, IInteractable
         {
             ObjectCollider.enabled = !ObjectCollider.enabled;
 
-            Transparency = ObjectColor.material.color.a;
-
-            Transparency = 0.3f;
-
-            //ObjectColor.material.color = new Color(null ,  , Transparency);
+            StartCoroutine(FadeOut());
         }
         else
         {
             ObjectCollider.enabled = !ObjectCollider.enabled;
+
+            StartCoroutine(FadeIn());
+        }
+    }
+
+    IEnumerator FadeOut()
+    {
+        IsPhasing = true;
+
+        while (Transparency > 0.2f)
+        {
+            Transparency -= 0.1f;
+
+            yield return new WaitForSeconds(0.1f);
+
+            ObjectColor.material.color = new Color(ObjectColor.material.color.r, ObjectColor.material.color.g, ObjectColor.material.color.b, Transparency);
+        }
+    }
+
+    IEnumerator FadeIn()
+    {
+        IsPhasing = false;
+
+        while (Transparency < 1f)
+        {
+            Transparency += 0.1f;
+
+            yield return new WaitForSeconds(0.1f);
+
+            ObjectColor.material.color = new Color(ObjectColor.material.color.r, ObjectColor.material.color.g, ObjectColor.material.color.b, Transparency);
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RunEndlessly : MonoBehaviour
 {
-    [SerializeField] Rigidbody MainCharacter;
+    private Rigidbody MainCharacter;
 
     [SerializeField] float MoveSpeed;
 

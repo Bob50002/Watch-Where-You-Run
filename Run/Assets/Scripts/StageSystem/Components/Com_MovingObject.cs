@@ -6,7 +6,7 @@ public class Com_MovingObject : MonoBehaviour , IInteractable
 {
      private Vector3 StartPosition;
 
-    //[SerializeField] GameObject EndPosition;
+    [SerializeField] GameObject EndPosition;
 
     [SerializeField] float MoveSpeed;
 
@@ -36,8 +36,8 @@ public class Com_MovingObject : MonoBehaviour , IInteractable
     //    return null;
     //}
 
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.DrawLine(StartPosition, EndPosition.transform.position);
-    //}
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(this.transform.position, EndPosition.transform.position);
+    }
 }
