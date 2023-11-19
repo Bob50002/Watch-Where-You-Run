@@ -1129,6 +1129,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 8878723535fd33e49825a192ab4bf9b9, type: 2}
+  - {fileID: 2100000, guid: 8878723535fd33e49825a192ab4bf9b9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1784,6 +1785,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1015963353578946142, guid: 8773db3591279ec44bdd3bdb8b8eaa28, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 1022625529149906712, guid: 6128f375aaab1584eb1bc66ba565c791, type: 3}
+    - target: {fileID: 3025743851080108692, guid: 8773db3591279ec44bdd3bdb8b8eaa28, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3025743851080108692, guid: 8773db3591279ec44bdd3bdb8b8eaa28, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a8d434f3310157347a647b550d24836d, type: 2}
+    - target: {fileID: 3025743851080108692, guid: 8773db3591279ec44bdd3bdb8b8eaa28, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: c048d43d158b88347ba70f9da711c1be, type: 2}
+    - target: {fileID: 3674205503675460417, guid: 8773db3591279ec44bdd3bdb8b8eaa28, type: 3}
+      propertyPath: m_Name
+      value: Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 4158712365370323451, guid: 8773db3591279ec44bdd3bdb8b8eaa28, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4158712365370323451, guid: 8773db3591279ec44bdd3bdb8b8eaa28, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4158712365370323451, guid: 8773db3591279ec44bdd3bdb8b8eaa28, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4484476516678111110, guid: 8773db3591279ec44bdd3bdb8b8eaa28, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1842,7 +1875,7 @@ PrefabInstance:
       objectReference: {fileID: 457304446}
     - target: {fileID: 4484476516678111119, guid: 8773db3591279ec44bdd3bdb8b8eaa28, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5828863297624557716, guid: 8773db3591279ec44bdd3bdb8b8eaa28, type: 3}

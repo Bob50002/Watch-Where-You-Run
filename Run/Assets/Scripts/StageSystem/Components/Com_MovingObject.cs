@@ -6,13 +6,20 @@ public class Com_MovingObject : MonoBehaviour , IInteractable
 {
      private Vector3 StartPosition;
 
-    [SerializeField] GameObject EndPosition;
+    [SerializeField] Vector3 EndPosition;
 
     [SerializeField] float MoveSpeed;
+
+    [SerializeField] float Delay;
 
     void start()
     {
         StartPosition = this.transform.position;
+    }
+
+    void Update()
+    {
+
     }
 
     public void DoSomething(bool Activate)
@@ -29,15 +36,22 @@ public class Com_MovingObject : MonoBehaviour , IInteractable
 
     }
 
-    //private IEnumerator MoveToEndPosition()
-    //{
-    //    transform.position = Vector3.MoveTowards(StartPosition, EndPosition.transform.position, MoveSpeed * Time.deltaTime);
+    private IEnumerator MoveToEndPosition()
+    {
+        transform.position = Vector3.MoveTowards(StartPosition, EndPosition, MoveSpeed * Time.deltaTime);
 
-    //    return null;
-    //}
+        yield return new WaitForSeconds(Delay);
+    }
+
+    private IEnumerator MoveToStartPosition()
+    {
+        transform.position = Vector3.MoveTowards(StartPosition, EndPosition, MoveSpeed * Time.deltaTime);
+
+        yield return new WaitForSeconds(Delay);
+    }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawLine(this.transform.position, EndPosition.transform.position);
+        Gizmos.DrawLine(this.transform.position, EndPosition);
     }
 }
