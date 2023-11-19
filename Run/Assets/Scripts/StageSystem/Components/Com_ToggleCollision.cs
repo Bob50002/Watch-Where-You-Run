@@ -8,9 +8,21 @@ public class Com_ToggleCollision : MonoBehaviour, IInteractable
 
     private Renderer ObjectColor;
 
-    [SerializeField] float Transparency;
+    private float Transparency;
 
     private bool IsPhasing;
+
+    [SerializeField] TrueOrFalse SetBehavior;
+
+    public enum TrueOrFalse
+    {
+        Normal,
+
+        Invert
+    }
+
+
+
     void Start()
     {
         IsPhasing = false;
@@ -20,6 +32,21 @@ public class Com_ToggleCollision : MonoBehaviour, IInteractable
         ObjectColor = GetComponent<MeshRenderer>();
 
         Transparency = ObjectColor.material.color.a;
+
+        //SetBehavior = TrueOrFalse.Normal;
+
+        if (SetBehavior == TrueOrFalse.Normal)
+        {
+            DoSomething(true);
+
+            ObjectCollider.enabled = true;
+        }
+        else
+        {
+            DoSomething(false);
+
+            ObjectCollider.enabled = false;
+        }
     }
 
     public void DoSomething(bool Activate)

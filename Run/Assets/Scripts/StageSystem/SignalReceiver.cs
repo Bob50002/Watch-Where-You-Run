@@ -10,6 +10,8 @@ public class SignalReceiver : MonoBehaviour
 
     [SerializeField] Color LineColor;
 
+    [SerializeField] Animator MCAnimator;
+
     private bool Enable;
 
 
@@ -46,7 +48,9 @@ public class SignalReceiver : MonoBehaviour
                 {
                     foreach (var Components in LinkedComponent)
                     {
-                        Components.GetComponent<IInteractable>().DoSomething(true);           
+                        Components.GetComponent<IInteractable>().DoSomething(true);
+
+                        MCAnimator.SetInteger("SendSignal", 1);
                     }
 
                     Enable = !Enable;
@@ -56,6 +60,8 @@ public class SignalReceiver : MonoBehaviour
                     foreach (var Components in LinkedComponent)
                     {
                         Components.GetComponent<IInteractable>().DoSomething(false);
+
+                        MCAnimator.SetInteger("SendSignal", 1);
                     }
 
                     Enable = !Enable;

@@ -1454,14 +1454,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4484476516557779446, guid: 8773db3591279ec44bdd3bdb8b8eaa28, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.147
-      objectReference: {fileID: 0}
-    - target: {fileID: 4484476516557779446, guid: 8773db3591279ec44bdd3bdb8b8eaa28, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.239
-      objectReference: {fileID: 0}
     - target: {fileID: 4484476516678111110, guid: 8773db3591279ec44bdd3bdb8b8eaa28, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1518,18 +1510,6 @@ PrefabInstance:
       propertyPath: HealthDisplay
       value: 
       objectReference: {fileID: 457304446}
-    - target: {fileID: 6446149397980767938, guid: 8773db3591279ec44bdd3bdb8b8eaa28, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: d88304443aa01304e954a704ca446634, type: 2}
-    - target: {fileID: 6446149397980767938, guid: 8773db3591279ec44bdd3bdb8b8eaa28, type: 3}
-      propertyPath: m_WarningMessage
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6446149397980767938, guid: 8773db3591279ec44bdd3bdb8b8eaa28, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8773db3591279ec44bdd3bdb8b8eaa28, type: 3}
 --- !u!1 &2005324261
