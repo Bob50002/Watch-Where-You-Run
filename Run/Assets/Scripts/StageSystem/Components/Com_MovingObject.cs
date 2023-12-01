@@ -5,11 +5,8 @@ using UnityEngine;
 public class Com_MovingObject : MonoBehaviour , IInteractable
 {
      private Vector3 StartPosition;
-
     [SerializeField] GameObject EndPosition;
-
     [SerializeField] float MoveSpeed;
-
     [SerializeField] float Delay;
 
     private enum TrueOrFalse

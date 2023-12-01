@@ -5,12 +5,9 @@ using UnityEngine;
 public class RunEndlessly : MonoBehaviour
 {
     private Rigidbody MainCharacter;
-
     [SerializeField] float MoveSpeed;
-
     [SerializeField] FirstPersonCamera PlayerDirection;
 
-    private 
 
     void Start()
     {

@@ -5,12 +5,10 @@ using UnityEngine;
 public class Com_ToggleCollision : MonoBehaviour, IInteractable
 {
     private Collider ObjectCollider;
-
     private Renderer ObjectColor;
-
     private float Transparency;
 
-    private bool IsPhasing;
+    //private bool IsPhasing;
 
     [SerializeField] TrueOrFalse SetBehavior;
 
@@ -21,19 +19,15 @@ public class Com_ToggleCollision : MonoBehaviour, IInteractable
         Invert
     }
 
-
-
     void Start()
     {
-        IsPhasing = false;
+        //IsPhasing = false;
 
         ObjectCollider = GetComponent<Collider>();
 
         ObjectColor = GetComponent<MeshRenderer>();
 
         Transparency = ObjectColor.material.color.a;
-
-        //SetBehavior = TrueOrFalse.Normal;
 
         if (SetBehavior == TrueOrFalse.Normal)
         {
@@ -51,7 +45,7 @@ public class Com_ToggleCollision : MonoBehaviour, IInteractable
 
     public void DoSomething(bool Activate)
     {
-            if (Activate == true)
+        if (Activate == true)
         {
             ObjectCollider.enabled = !ObjectCollider.enabled;
 
@@ -67,7 +61,7 @@ public class Com_ToggleCollision : MonoBehaviour, IInteractable
 
     IEnumerator FadeOut()
     {
-        IsPhasing = true;
+       // IsPhasing = true;
 
         while (Transparency > 0.2f)
         {
@@ -81,7 +75,7 @@ public class Com_ToggleCollision : MonoBehaviour, IInteractable
 
     IEnumerator FadeIn()
     {
-        IsPhasing = false;
+       // IsPhasing = false;
 
         while (Transparency < 1f)
         {
