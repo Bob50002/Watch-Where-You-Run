@@ -22,10 +22,8 @@ public class RunEndlessly : MonoBehaviour
 
     void Movement()
     {
-        Input.GetAxisRaw("Horizontal");
+        //MainCharacter.position += transform.forward * MoveSpeed * Time.deltaTime;
 
-        Input.GetAxisRaw("Vertical");
-
-        MainCharacter.transform.position += transform.forward * MoveSpeed * Time.deltaTime;
+        MainCharacter.velocity = transform.forward * MoveSpeed * Time.deltaTime;
     }
 }
