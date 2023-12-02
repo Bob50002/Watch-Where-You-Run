@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7838506399070476775}
   - component: {fileID: 7838506399070476568}
   - component: {fileID: 7838506399070476569}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Base 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 7838506399825718057}
   - component: {fileID: 7838506399825718058}
   - component: {fileID: 7838506399825718059}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,9 +204,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7838506399964214785}
-  - component: {fileID: 7838506399964214784}
-  m_Layer: 0
-  m_Name: Signal begin
+  m_Layer: 2
+  m_Name: Signal begin point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -219,36 +218,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7838506399964214786}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 108.6, z: 39.6}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 110, z: 45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7731908116393000173}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7838506399964214784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7838506399964214786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d37e0e703c3ccc43ade2145048d250b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FirstPersonCamera: {fileID: 0}
-  LinkedComponent:
-  - {fileID: 0}
-  - {fileID: 0}
-  LineColor: {r: 0, g: 0.005592346, b: 1, a: 1}
-  MCAnimator: {fileID: 0}
-  Mask:
-    serializedVersion: 2
-    m_Bits: 0
-  Player: {fileID: 0}
 --- !u!1 &7838506400042204951
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +235,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7838506400042204950}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Signal Receiver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +273,7 @@ GameObject:
   - component: {fileID: 7838506400132874136}
   - component: {fileID: 7838506400132874137}
   - component: {fileID: 7838506400132874138}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 78726aac22cff7f42ac5973e1df971ea, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 78726aac22cff7f42ac5973e1df971ea, type: 3}
       propertyPath: m_Name
@@ -459,10 +436,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 78726aac22cff7f42ac5973e1df971ea, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78726aac22cff7f42ac5973e1df971ea, type: 3}
+--- !u!1 &6919378251364181591 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 78726aac22cff7f42ac5973e1df971ea, type: 3}
+  m_PrefabInstance: {fileID: 7838506398683831046}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1132948863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6919378251364181591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d37e0e703c3ccc43ade2145048d250b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FirstPersonCamera: {fileID: 0}
+  LinkedComponent:
+  - {fileID: 0}
+  - {fileID: 0}
+  LineColor: {r: 0.05581951, g: 0, b: 1, a: 1}
+  MCAnimator: {fileID: 0}
+  Range: 1000
+  Mask:
+    serializedVersion: 2
+    m_Bits: 0
+  RaycastStartingPosition: {fileID: 7838506399964214785}
+  PlayerPosition: {fileID: 0}
 --- !u!4 &7731908116393000173 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 78726aac22cff7f42ac5973e1df971ea, type: 3}
@@ -537,11 +543,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 29ff14e3203061f42879e0a6d29a32b9, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 29ff14e3203061f42879e0a6d29a32b9, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29ff14e3203061f42879e0a6d29a32b9, type: 3}

@@ -11,18 +11,12 @@ public class SignalReceiver : MonoBehaviour
     
     [SerializeField] Animator MCAnimator;
     private string SendSignal = "SendSignal";
+    [SerializeField] float Range;
     [SerializeField] LayerMask Mask;
-
-    [SerializeField] GameObject Player;
-    private bool Enable;
+    [SerializeField] Transform RaycastStartingPosition;
+    [SerializeField] GameObject PlayerPosition;
     RaycastHit Hit;
-
     private bool Activate;
-
-    private void Start()
-    {
-        Enable = true;
-    }
 
     private bool IsVisible(Camera C, GameObject PlayerCharacter)
     {
@@ -43,46 +37,34 @@ public class SignalReceiver : MonoBehaviour
 
     private void Update()
     {
-        if (IsVisible(FirstPersonCamera, this.gameObject) && Input.GetKeyDown(KeyCode.Mouse0))
+        if (IsVisible(FirstPersonCamera, this.gameObject))
         {
-            foreach (var Components in LinkedComponent)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && IsNotObstructed())
             {
-              Components.GetComponent<IInteractable>().DoSomething(!Activate);
+                foreach (var Components in LinkedComponent)
+                {
+                    Components.GetComponent<IInteractable>().DoSomething(!Activate);
 
-              MCAnimator.SetTrigger(SendSignal);
+                    MCAnimator.SetTrigger(SendSignal);
+                }
             }
         }
-
-        Debug.Log(IsNotObstructed());
-
-        Debug.DrawLine(transform.position, Player.transform.position);
     }
 
     private bool IsNotObstructed()
-    {
-        if (Physics.Raycast(transform.position, Player.transform.position, out Hit, Mathf.Infinity, Mask))
+    { 
+        if (Physics.Linecast(RaycastStartingPosition.position, PlayerPosition.transform.position , out Hit))
         {
-            return(true);        
-        }
-        else
-        {
-            return (false);
-        }      
-    }
-           
-    //private void Update()
-    //{
-    //    if (Physics.Raycast(transform.position, Player.transform.position, out var hit, Mathf.Infinity, Mask))
-    //    {
-    //        Debug.Log("See");
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("Cannot see");
-    //    }
+            Debug.Log(Hit.collider.gameObject.name);
 
-    //    Debug.DrawLine(transform.position, Player.transform.position);
-    //}
+            if (Hit.collider.tag == "Player")
+            {
+                return (true);
+            }
+        }
+
+        return (false);
+    }
 
     private void OnDrawGizmosSelected()
     {
