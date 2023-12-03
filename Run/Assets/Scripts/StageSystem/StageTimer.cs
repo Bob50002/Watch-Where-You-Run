@@ -8,14 +8,23 @@ using UnityEngine.SceneManagement;
 public class StageTimer : MonoBehaviour
 {
     [SerializeField] float LevelTimer;
-
-    private float TimeDecay = 1;
-
-    [SerializeField] Animator TransitionController;
-
     [SerializeField] TextMeshProUGUI Countdown;
 
- 
+    private float TimeDecay = 1;
+    [SerializeField] Animator TransitionController;
+    
+    private const string End = "End";
+
+
+    private void Start()
+    {
+        //Time.timeScale = 0;
+
+        StartCoroutine(CountdownBeforeStart());
+    }
+
+
+
     void Update()
     {
         LevelTimer = Mathf.MoveTowards(LevelTimer, 0, TimeDecay * Time.deltaTime);
@@ -24,15 +33,20 @@ public class StageTimer : MonoBehaviour
 
         if (LevelTimer <= 0)
         {
-            Debug.Log("You win");
-
             StartCoroutine(LoadLevel());
         }
     }
 
-    IEnumerator LoadLevel()
+    private IEnumerator CountdownBeforeStart()
     {
-        TransitionController.SetTrigger("End");
+        yield return new WaitForSeconds(1);
+
+        Debug.Log("Start");
+    }
+
+    private IEnumerator LoadLevel()
+    {
+        TransitionController.SetTrigger(End);
 
         yield return new WaitForSeconds(1f);
 

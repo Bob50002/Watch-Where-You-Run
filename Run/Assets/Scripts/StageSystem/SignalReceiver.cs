@@ -6,18 +6,18 @@ public class SignalReceiver : MonoBehaviour
 {
     
     [SerializeField] Camera FirstPersonCamera; 
-    [SerializeField] Color LineColor;
-    
+    [SerializeField] Color LineColor; 
     [SerializeField] Animator MCAnimator;
     private string SendSignal = "SendSignal";
     [SerializeField] float Range;
+    [SerializeField] float CountdownTimer;
     [SerializeField] LayerMask Mask;
     [SerializeField] Transform RaycastStartingPosition;
     [SerializeField] GameObject PlayerPosition;
     RaycastHit Hit;
-    private bool Activate;
+    private bool ReadyToActivate;
     [SerializeField] List<GameObject> LinkedComponent = new List<GameObject>();
-
+    [SerializeField] Material Light;
 
 
     private bool IsVisible(Camera C, GameObject PlayerCharacter)
@@ -37,17 +37,26 @@ public class SignalReceiver : MonoBehaviour
         return true;
     }
 
+    private void Start()
+    {
+        ReadyToActivate = true;
+    }
+
     private void Update()
     {
         if (IsVisible(FirstPersonCamera, this.gameObject))
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0) && IsNotObstructed())
+            if (Input.GetKeyDown(KeyCode.Mouse0) && IsNotObstructed() && ReadyToActivate == true)
             {
+                ReadyToActivate = false;
+
+                
+
                 foreach (var Components in LinkedComponent)
                 {
                     Components.GetComponent<IInteractable>().DoSomething();
 
-                    Debug.Log(Activate);
+                    StartCoroutine(Countdown());
 
                     MCAnimator.SetTrigger(SendSignal);
                 }
@@ -80,7 +89,13 @@ public class SignalReceiver : MonoBehaviour
             {
                 Gizmos.DrawLine(this.transform.position, LinkedComponent[i].transform.position);
             }
-
         }
+    }
+
+    private IEnumerator Countdown()
+    {
+        yield return new WaitForSeconds(CountdownTimer);
+
+        ReadyToActivate = true;
     }
 }

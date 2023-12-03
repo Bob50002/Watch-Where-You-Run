@@ -7,12 +7,10 @@ public class Com_ToggleCollision : MonoBehaviour, IInteractable
     private Collider ObjectCollider;
     private Renderer ObjectColor;
     private float Transparency;
-
-    private bool IsPhasing;
     private bool Active;
     [SerializeField] NormalOrInvert SetBehavior;
 
-    public enum NormalOrInvert
+    private enum NormalOrInvert
     {
         Normal,
 
@@ -21,8 +19,6 @@ public class Com_ToggleCollision : MonoBehaviour, IInteractable
 
     void Start()
     {
-        //IsPhasing = false;
-
         ObjectCollider = GetComponent<Collider>();
 
         ObjectColor = GetComponent<MeshRenderer>();
@@ -31,13 +27,17 @@ public class Com_ToggleCollision : MonoBehaviour, IInteractable
 
         if (SetBehavior == NormalOrInvert.Normal)
         {
-            Active = true;
+            Active = false;
 
-            ObjectCollider.enabled = false;
+         
+
+            ObjectCollider.enabled = true;
         }
         else
         {
-            Active = false;
+       
+
+            Active = true;
         }
 
         CheckBool();
@@ -46,7 +46,7 @@ public class Com_ToggleCollision : MonoBehaviour, IInteractable
     public void DoSomething()
     {
         Active = !Active;
-
+ 
         CheckBool();
     }
 
