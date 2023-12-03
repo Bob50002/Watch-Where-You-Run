@@ -458,17 +458,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FirstPersonCamera: {fileID: 0}
-  LinkedComponent:
-  - {fileID: 0}
-  - {fileID: 0}
   LineColor: {r: 0.05581951, g: 0, b: 1, a: 1}
   MCAnimator: {fileID: 0}
   Range: 1000
+  CountdownTimer: 3
   Mask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   RaycastStartingPosition: {fileID: 7838506399964214785}
   PlayerPosition: {fileID: 0}
+  LinkedComponent:
+  - {fileID: 0}
+  - {fileID: 0}
+  Light: {fileID: 2100000, guid: 655596f5f62db6240a2701974905f3df, type: 2}
 --- !u!4 &7731908116393000173 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 78726aac22cff7f42ac5973e1df971ea, type: 3}

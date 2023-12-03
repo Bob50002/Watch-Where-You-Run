@@ -15,14 +15,6 @@ public class StageTimer : MonoBehaviour
     
     private const string End = "End";
 
-
-    private void Start()
-    {
-        StartCoroutine(CountdownBeforeStart());
-    }
-
-
-
     void Update()
     {
         LevelTimer = Mathf.MoveTowards(LevelTimer, 0, TimeDecay * Time.deltaTime);
@@ -33,13 +25,6 @@ public class StageTimer : MonoBehaviour
         {
             StartCoroutine(LoadLevel());
         }
-    }
-
-    private IEnumerator CountdownBeforeStart()
-    {
-        yield return new WaitForSeconds(1);
-
-        Debug.Log("Start");
     }
 
     private IEnumerator LoadLevel()
