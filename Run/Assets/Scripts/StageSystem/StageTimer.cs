@@ -18,8 +18,6 @@ public class StageTimer : MonoBehaviour
 
     private void Start()
     {
-        //Time.timeScale = 0;
-
         StartCoroutine(CountdownBeforeStart());
     }
 
