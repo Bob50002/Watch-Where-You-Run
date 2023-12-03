@@ -53,7 +53,7 @@ public class HpAndDamage : MonoBehaviour
 
                 RedScreen.color = Alpha;
 
-                //StartCoroutine(Respawn());
+                StartCoroutine(RedScreenWhenHit());
 
                 Destroy(other.gameObject);
 
@@ -65,10 +65,10 @@ public class HpAndDamage : MonoBehaviour
      
     }
 
-    //IEnumerator Respawn()
-    //{
-    //    this.gameObject.transform.position = respawnPosition;
+    private IEnumerator RedScreenWhenHit()
+    {
+        //this.gameObject.transform.position = respawnPosition;
 
-    //    yield return new WaitForSeconds(1f);
-    //}
+        yield return new WaitForSeconds(1f);
+    }
 }

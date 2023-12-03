@@ -8,11 +8,11 @@ public class Com_ToggleCollision : MonoBehaviour, IInteractable
     private Renderer ObjectColor;
     private float Transparency;
 
-    //private bool IsPhasing;
+    private bool IsPhasing;
+    private bool Active;
+    [SerializeField] NormalOrInvert SetBehavior;
 
-    [SerializeField] TrueOrFalse SetBehavior;
-
-    public enum TrueOrFalse
+    public enum NormalOrInvert
     {
         Normal,
 
@@ -29,40 +29,47 @@ public class Com_ToggleCollision : MonoBehaviour, IInteractable
 
         Transparency = ObjectColor.material.color.a;
 
-        if (SetBehavior == TrueOrFalse.Normal)
+        if (SetBehavior == NormalOrInvert.Normal)
         {
-            DoSomething(true);
-
-            ObjectCollider.enabled = true;
-        }
-        else
-        {
-            DoSomething(false);
+            Active = true;
 
             ObjectCollider.enabled = false;
         }
+        else
+        {
+            Active = false;
+        }
+
+        CheckBool();
     }
 
-    public void DoSomething(bool Activate)
+    public void DoSomething()
     {
-        if (Activate == true)
-        {
-            ObjectCollider.enabled = !ObjectCollider.enabled;
+        Active = !Active;
 
+        CheckBool();
+    }
+
+
+    private void CheckBool()
+    {
+        if (Active == true)
+        {
             StartCoroutine(FadeOut());
+
+            ObjectCollider.enabled = false;
         }
         else
         {
-            ObjectCollider.enabled = !ObjectCollider.enabled;
-
             StartCoroutine(FadeIn());
+
+            ObjectCollider.enabled = true;
         }
+        
     }
 
-    IEnumerator FadeOut()
+    private IEnumerator FadeOut()
     {
-       // IsPhasing = true;
-
         while (Transparency > 0.2f)
         {
             Transparency -= 0.1f;
@@ -70,13 +77,13 @@ public class Com_ToggleCollision : MonoBehaviour, IInteractable
             yield return new WaitForSeconds(0.1f);
 
             ObjectColor.material.color = new Color(ObjectColor.material.color.r, ObjectColor.material.color.g, ObjectColor.material.color.b, Transparency);
+
+            Active = !Active;         
         }
     }
 
-    IEnumerator FadeIn()
+    private IEnumerator FadeIn()
     {
-       // IsPhasing = false;
-
         while (Transparency < 1f)
         {
             Transparency += 0.1f;
@@ -84,6 +91,8 @@ public class Com_ToggleCollision : MonoBehaviour, IInteractable
             yield return new WaitForSeconds(0.1f);
 
             ObjectColor.material.color = new Color(ObjectColor.material.color.r, ObjectColor.material.color.g, ObjectColor.material.color.b, Transparency);
+
+            Active = !Active;            
         }
     }
 }

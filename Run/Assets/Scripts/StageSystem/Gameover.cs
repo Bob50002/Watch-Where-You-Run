@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Gameover : MonoBehaviour
 {
-    [SerializeField] HpAndDamage _Health;
+    [SerializeField] HpAndDamage Health;
 
     void Update()
     {
-        if (_Health._Health <= 0)
+        if (Health._Health <= 0)
         {
             Time.timeScale = 0;
         }

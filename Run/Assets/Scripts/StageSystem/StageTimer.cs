@@ -15,12 +15,7 @@ public class StageTimer : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI Countdown;
 
-    void Start()
-    {
-        //Door.GetComponent<DoorEnd>().enabled = false;
-    }
-
-    
+ 
     void Update()
     {
         LevelTimer = Mathf.MoveTowards(LevelTimer, 0, TimeDecay * Time.deltaTime);

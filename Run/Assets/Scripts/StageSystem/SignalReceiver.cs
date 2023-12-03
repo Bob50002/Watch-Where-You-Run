@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SignalReceiver : MonoBehaviour
+public class SignalReceiver : MonoBehaviour 
 {
     
-    [SerializeField] Camera FirstPersonCamera;
-    [SerializeField] List<GameObject> LinkedComponent = new List<GameObject>();
+    [SerializeField] Camera FirstPersonCamera; 
     [SerializeField] Color LineColor;
     
     [SerializeField] Animator MCAnimator;
@@ -17,6 +16,9 @@ public class SignalReceiver : MonoBehaviour
     [SerializeField] GameObject PlayerPosition;
     RaycastHit Hit;
     private bool Activate;
+    [SerializeField] List<GameObject> LinkedComponent = new List<GameObject>();
+
+
 
     private bool IsVisible(Camera C, GameObject PlayerCharacter)
     {
@@ -43,7 +45,9 @@ public class SignalReceiver : MonoBehaviour
             {
                 foreach (var Components in LinkedComponent)
                 {
-                    Components.GetComponent<IInteractable>().DoSomething(!Activate);
+                    Components.GetComponent<IInteractable>().DoSomething();
+
+                    Debug.Log(Activate);
 
                     MCAnimator.SetTrigger(SendSignal);
                 }

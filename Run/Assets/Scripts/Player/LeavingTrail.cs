@@ -11,22 +11,12 @@ public class LeavingTrail : MonoBehaviour
     private float PlayerY;
 
     private float PlayerZ;
-
-    //private float Countdown;
     
     [SerializeField] List<GameObject> ProjectilesPool = new List<GameObject>();
 
     void Start()
     {
-        //Countdown = OriginalCountdownValue;
-
         StartCoroutine(ReleaseProjectile());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-          
     }
 
     IEnumerator ReleaseProjectile()
@@ -37,8 +27,6 @@ public class LeavingTrail : MonoBehaviour
           PlayerY = this.transform.position.y;
 
           PlayerZ = this.transform.position.z;
-
-          //Countdown = OriginalCountdownValue;
 
           yield return new WaitForSeconds(0.3f);
 

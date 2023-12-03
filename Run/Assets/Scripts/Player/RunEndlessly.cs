@@ -8,13 +8,15 @@ public class RunEndlessly : MonoBehaviour
     [SerializeField] float MoveSpeed;
     [SerializeField] FirstPersonCamera PlayerDirection;
 
+    private float MovementX;
+
 
     void Start()
     {
         MainCharacter = this.GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
+   
     void FixedUpdate()
     {
         Movement();
@@ -24,6 +26,8 @@ public class RunEndlessly : MonoBehaviour
     {
         //MainCharacter.position += transform.forward * MoveSpeed * Time.deltaTime;
 
-        MainCharacter.velocity = transform.forward * MoveSpeed * Time.deltaTime;
+        Vector3 MovementVelocity = transform.forward * MoveSpeed * Time.deltaTime;
+
+        MainCharacter.velocity = new Vector3(MovementVelocity.x, MainCharacter.velocity.y, MovementVelocity.z);
     }
 }
