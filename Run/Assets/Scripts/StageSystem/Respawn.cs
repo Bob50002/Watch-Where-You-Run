@@ -5,14 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Respawn : MonoBehaviour
 {
-
-
-    
-    void Update()
-    {
-        
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         RestartStage();

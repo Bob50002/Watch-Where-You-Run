@@ -21,6 +21,13 @@ public class ScenesCollection : MonoBehaviour
     [Header("Settings scene name here")]
     [SerializeField] string Settings;
 
+
+    private void Start()
+    {
+        Cursor.visible = true;
+
+        Cursor.lockState = CursorLockMode.None;
+    }
     public void StartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

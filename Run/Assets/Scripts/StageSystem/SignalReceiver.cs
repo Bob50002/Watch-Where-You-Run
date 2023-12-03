@@ -4,21 +4,29 @@ using UnityEngine;
 
 public class SignalReceiver : MonoBehaviour 
 {
-    
-    [SerializeField] Camera FirstPersonCamera; 
+    [Header("Components")]
+    [SerializeField] List<GameObject> LinkedComponent = new List<GameObject>();
     [SerializeField] Color LineColor; 
+
+    [Header("Animation")]
     [SerializeField] Animator MCAnimator;
-    private string SendSignal = "SendSignal";
+    private const string SendSignal = "SendSignal";
+
+    
+    [Header("Linecast and activation")]
     [SerializeField] float Range;
-    [SerializeField] float CountdownTimer;
     [SerializeField] LayerMask Mask;
     [SerializeField] Transform RaycastStartingPosition;
     [SerializeField] GameObject PlayerPosition;
+    [SerializeField] Camera FirstPersonCamera; 
     RaycastHit Hit;
+    [SerializeField] float CountdownTimer;
     private bool ReadyToActivate;
-    [SerializeField] List<GameObject> LinkedComponent = new List<GameObject>();
-    [SerializeField] Material Light;
+    private const string Player = "Player";
 
+    [Header("Audio")]
+    [SerializeField] AudioSource Audio;
+    [SerializeField] AudioClip SendSignalAudio;
 
     private bool IsVisible(Camera C, GameObject PlayerCharacter)
     {
@@ -50,8 +58,6 @@ public class SignalReceiver : MonoBehaviour
             {
                 ReadyToActivate = false;
 
-                
-
                 foreach (var Components in LinkedComponent)
                 {
                     Components.GetComponent<IInteractable>().DoSomething();
@@ -59,6 +65,8 @@ public class SignalReceiver : MonoBehaviour
                     StartCoroutine(Countdown());
 
                     MCAnimator.SetTrigger(SendSignal);
+
+                    Audio.PlayOneShot(SendSignalAudio);
                 }
             }
         }
@@ -70,7 +78,7 @@ public class SignalReceiver : MonoBehaviour
         {
             Debug.Log(Hit.collider.gameObject.name);
 
-            if (Hit.collider.tag == "Player")
+            if (Hit.collider.tag == Player)
             {
                 return (true);
             }

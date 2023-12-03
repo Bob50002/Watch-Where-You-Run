@@ -395,6 +395,8 @@ MonoBehaviour:
   - Projectile
   HealthDisplay: {fileID: 0}
   RedScreen: {fileID: 0}
+  Audio: {fileID: 0}
+  DamagedAudio: {fileID: 8300000, guid: e06ace996139dcb4daf594a91c704565, type: 3}
 --- !u!1001 &585405350538992467
 PrefabInstance:
   m_ObjectHideFlags: 0
