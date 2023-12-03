@@ -6,12 +6,11 @@ using TMPro;
 public class HpAndDamage : MonoBehaviour
 {
     [SerializeField] int Health;
-
     [SerializeField] List<string> ProjectileList = new List<string>();
-
     [SerializeField] TextMeshProUGUI HealthDisplay;
-
     [SerializeField] Image RedScreen;
+    [SerializeField] AudioSource Audio;
+    [SerializeField] AudioClip DamagedAudio;
 
     private Vector3 RespawnPosition;
 
@@ -47,19 +46,11 @@ public class HpAndDamage : MonoBehaviour
             {
                 Health -= 1;
 
-                Color Alpha = RedScreen.color;
-
-                Alpha.a = 0.3f;
-
-                RedScreen.color = Alpha;
-
                 StartCoroutine(RedScreenWhenHit());
 
                 Destroy(other.gameObject);
 
-
-
-                //RedScreen.color = Alpha;
+                Audio.PlayOneShot(DamagedAudio);
             }
         }
      
@@ -67,8 +58,17 @@ public class HpAndDamage : MonoBehaviour
 
     private IEnumerator RedScreenWhenHit()
     {
-        //this.gameObject.transform.position = respawnPosition;
+        Color Alpha = RedScreen.color;
 
-        yield return new WaitForSeconds(1f);
+        Alpha.a = 0.5f;
+   
+        while (Alpha.a > 0)
+        {
+            Alpha.a -= 0.1f;
+
+            yield return new WaitForSeconds(0.1f);
+
+            RedScreen.color = Alpha;
+        }
     }
 }

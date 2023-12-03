@@ -18,6 +18,8 @@ public class ScenesCollection : MonoBehaviour
     [Header("Credits scene name here")]
     [SerializeField] string Credits;
 
+    [Header("Settings scene name here")]
+    [SerializeField] string Settings;
 
     public void StartGame()
     {
@@ -37,6 +39,11 @@ public class ScenesCollection : MonoBehaviour
     public void ToCredit()
     {
         SceneManager.LoadScene(Credits);
+    }
+
+    public void ToSettings()
+    {
+        SceneManager.LoadScene(Settings);
     }
 
     public void ToFirstTutorialPage()
