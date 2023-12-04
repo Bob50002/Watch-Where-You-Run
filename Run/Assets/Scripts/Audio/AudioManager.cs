@@ -10,7 +10,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] Slider AudioSlider;
     [SerializeField] string VolumeParameter = "Volume";
     [SerializeField] float VolumeMulti = 20f;
-
+    [SerializeField] AudioSource SFXVolume;
+    [SerializeField] const string AudioSliderValue = "AudioSliderValue";
     private void Awake()
     {
         AudioMix.GetFloat(VolumeParameter, out float currentVolume);
@@ -20,9 +21,16 @@ public class AudioManager : MonoBehaviour
         AudioSlider.onValueChanged.AddListener(SliderValueChange);
     }
 
+    private void Start()
+    {
+        AudioSlider.value = (PlayerPrefs.GetFloat(AudioSliderValue));
+    }
+
     public void SliderValueChange(float value)
     {
         AudioMix.SetFloat(VolumeParameter, Mathf.Log10(value) * VolumeMulti);
+
+        PlayerPrefs.SetFloat(AudioSliderValue, AudioSlider.value);
     }
 
     private void OnDestroy()
