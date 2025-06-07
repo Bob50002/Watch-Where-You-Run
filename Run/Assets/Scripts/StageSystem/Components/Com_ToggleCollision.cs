@@ -29,14 +29,10 @@ public class Com_ToggleCollision : MonoBehaviour, IInteractable
         {
             Active = false;
 
-         
-
             ObjectCollider.enabled = true;
         }
         else
         {
-       
-
             Active = true;
         }
 
